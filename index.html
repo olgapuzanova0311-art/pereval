@@ -199,24 +199,91 @@ img,canvas,video{display:block}
 .book{padding:clamp(110px,16vh,180px) var(--pad) clamp(80px,12vh,140px)}
 .book h2{font-weight:900;font-size:clamp(64px,13vw,240px);line-height:.8;letter-spacing:-.075em;text-transform:uppercase}
 .book h2 em{font-style:normal;color:var(--ember)}
-.book__grid{display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(32px,6vw,100px);margin-top:56px}
-.book__side p{color:rgba(243,241,236,.75);line-height:1.55;max-width:380px;font-size:16px}
-.book__side .mono{display:block;margin-top:28px;color:var(--mute);line-height:2}
+.bk{display:grid;grid-template-columns:1fr 360px;gap:clamp(16px,2vw,28px);margin-top:48px;align-items:start}
+.bk__main{border:1px solid var(--line);border-radius:14px;padding:clamp(18px,2.4vw,34px);min-width:0}
+.bk__steps{display:flex;gap:22px;margin-bottom:26px;color:var(--mute);flex-wrap:wrap}
+.bk__steps span{padding-bottom:8px;border-bottom:1px solid transparent;transition:.3s}
+.bk__steps span.on{color:var(--ink);border-color:var(--ember)}
+.bk__steps span.done{color:var(--ink)}
+.cal__nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.cal__nav button,.stp button{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--ink);font:500 16px var(--d);cursor:pointer;transition:.25s}
+.cal__nav button:hover:not(:disabled),.stp button:hover{background:var(--ink);color:var(--bg)}
+.cal__nav button:disabled{opacity:.25;cursor:default}
+.cal{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(16px,3vw,44px)}
+.mon h4{font-weight:800;font-size:22px;letter-spacing:-.04em;text-transform:capitalize;margin-bottom:12px}
+.mon__g{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px}
+.mon__g .wd{font:400 10px var(--m);text-transform:uppercase;color:var(--mute);text-align:center;padding:4px 0 8px}
+.dd{aspect-ratio:1;border:0;background:transparent;color:var(--ink);font:500 15px var(--d);border-radius:8px;cursor:pointer;position:relative;transition:background .15s,color .15s}
+.dd small{position:absolute;left:0;right:0;bottom:3px;font:400 8px var(--m);color:var(--mute);letter-spacing:0}
+.dd:hover:not(:disabled){background:rgba(243,241,236,.1)}
+.dd:disabled{color:rgba(243,241,236,.18);cursor:default}
+.dd.busy{color:rgba(243,241,236,.28);background:repeating-linear-gradient(135deg,rgba(243,241,236,.06) 0 3px,transparent 3px 7px);text-decoration:line-through}
+.dd.nyd{box-shadow:inset 0 0 0 1px rgba(255,90,31,.55)}
+.dd.nyd small{color:var(--ember)}
+.dd.in{background:rgba(255,90,31,.18);border-radius:0}
+.dd.s,.dd.e{background:var(--ember)!important;color:#fff;border-radius:8px}
+.dd.s small,.dd.e small{color:#fff}
+.dd.today::after{content:"";position:absolute;top:5px;right:5px;width:4px;height:4px;border-radius:50%;background:var(--ember)}
+.cal__legend{display:flex;gap:18px;flex-wrap:wrap;margin:18px 0 22px;color:var(--mute)}
+.cal__legend i{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-2px;margin-right:6px}
+.lg-free{border:1px solid var(--line)}.lg-busy{background:repeating-linear-gradient(135deg,rgba(243,241,236,.25) 0 2px,transparent 2px 5px)}.lg-ny{box-shadow:inset 0 0 0 1px var(--ember)}
+.guests{display:flex;gap:28px;flex-wrap:wrap;padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:22px}
+.stp{display:flex;align-items:center;gap:14px}
+.stp label{font:400 11px var(--m);text-transform:uppercase;color:var(--mute);min-width:70px}
+.stp b{font-weight:800;font-size:22px;min-width:22px;text-align:center}
+.bk__nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.btn:disabled{opacity:.35;pointer-events:none}
+.bkh{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.bkh__c{position:relative;border:1px solid var(--line);border-radius:10px;overflow:hidden;cursor:pointer;text-align:left;background:transparent;color:var(--ink);padding:0;font:inherit;transition:border-color .25s,transform .25s}
+.bkh__c:hover{transform:translateY(-2px)}
+.bkh__c.sel{border-color:var(--ember);box-shadow:0 0 0 1px var(--ember)}
+.bkh__c img{width:100%;aspect-ratio:16/10;object-fit:cover}
+.bkh__c div{padding:12px 14px 14px}
+.bkh__c h5{font-weight:900;font-size:26px;letter-spacing:-.05em;text-transform:uppercase;line-height:1}
+.bkh__c p{font:400 11px var(--m);color:var(--mute);margin-top:6px;text-transform:uppercase}
+.bkh__c strong{display:block;margin-top:10px;font-weight:800;font-size:18px;letter-spacing:-.02em}
+.bkh__c.off{opacity:.38;pointer-events:none}
+.bkh__c.off strong{font:400 11px var(--m);text-transform:uppercase;color:var(--ember)}
+.bkh__c .chk{position:absolute;top:10px;right:10px;width:26px;height:26px;border-radius:50%;background:var(--ember);color:#fff;display:none;place-items:center;font-size:14px}
+.bkh__c.sel .chk{display:grid}
+.ex{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:22px}
+.ex label{display:flex;justify-content:space-between;align-items:center;gap:10px;border:1px solid var(--line);border-radius:10px;padding:14px;cursor:pointer;font-size:15px;transition:border-color .2s}
+.ex label:has(input:checked){border-color:var(--ember);background:rgba(255,90,31,.08)}
+.ex input{accent-color:var(--ember);width:18px;height:18px}
+.ex span small{display:block;font:400 10px var(--m);color:var(--mute);text-transform:uppercase;margin-top:3px}
 .form{display:grid;grid-template-columns:1fr 1fr;gap:26px 22px}
 .f{display:flex;flex-direction:column;gap:8px;position:relative}
 .f.full{grid-column:1/-1}
 .f label{font:400 11px var(--m);letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
-.f input,.f select{background:transparent;border:0;border-bottom:1px solid var(--line);color:var(--ink);font:500 22px var(--d);letter-spacing:-.02em;padding:8px 0 12px;outline:none;border-radius:0;-webkit-appearance:none;appearance:none;transition:border-color .3s}
-.f select option{background:#111}
-.f input:focus,.f select:focus{border-color:var(--ember)}
-.f input::placeholder{color:rgba(243,241,236,.25)}
+.f input,.f textarea{background:transparent;border:0;border-bottom:1px solid var(--line);color:var(--ink);font:500 20px var(--d);letter-spacing:-.02em;padding:8px 0 12px;outline:none;border-radius:0;resize:none;transition:border-color .3s}
+.f input:focus,.f textarea:focus{border-color:var(--ember)}
+.f input::placeholder,.f textarea::placeholder{color:rgba(243,241,236,.25)}
 .f .err{font:400 11px var(--m);color:var(--ember);min-height:12px}
-.form__btns{grid-column:1/-1;display:flex;gap:10px;flex-wrap:wrap}
-.form__btns .btn{flex:1;justify-content:center;min-width:220px}
+.pay{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pay label{border:1px solid var(--line);border-radius:10px;padding:14px;cursor:pointer;display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.35}
+.pay label:has(input:checked){border-color:var(--ember)}
+.pay input{accent-color:var(--ember);margin-top:3px}
+.pay small{display:block;font:400 10px var(--m);color:var(--mute);text-transform:uppercase;margin-top:4px}
 .form__note{grid-column:1/-1;font:400 10px var(--m);color:var(--mute);letter-spacing:.04em;text-transform:uppercase}
-.ok{grid-column:1/-1;display:none;padding:22px;border:1px solid var(--ember);border-radius:8px;line-height:1.55}
-.ok b{display:block;font-weight:900;font-size:34px;letter-spacing:-.05em;text-transform:uppercase;margin-bottom:6px}
-@media (max-width:900px){.book__grid,.form{grid-template-columns:1fr}}
+.done{text-align:left}
+.done .mono{color:var(--mute)}
+.done h3{font-weight:900;font-size:clamp(46px,6vw,96px);letter-spacing:-.07em;line-height:.85;text-transform:uppercase;margin:14px 0 18px}
+.done h3 em{font-style:normal;color:var(--ember)}
+.done p{max-width:520px;line-height:1.55;color:rgba(243,241,236,.82)}
+.bk__sum{position:sticky;top:84px;border:1px solid var(--line);border-radius:14px;padding:22px;background:rgba(243,241,236,.03)}
+.bk__sum h4{font:500 11px var(--m);text-transform:uppercase;color:var(--mute);margin-bottom:16px}
+.sum__img{aspect-ratio:16/9;border-radius:8px;overflow:hidden;margin-bottom:16px;background:#111}
+.sum__img img{width:100%;height:100%;object-fit:cover}
+.sum__row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);font-size:14px}
+.sum__row span:first-child{color:var(--mute)}
+.sum__row span:last-child{text-align:right}
+.sum__tot{display:flex;justify-content:space-between;align-items:baseline;margin-top:16px}
+.sum__tot b{font-weight:900;font-size:34px;letter-spacing:-.05em}
+.sum__pre{font:400 11px var(--m);color:var(--mute);text-transform:uppercase;margin-top:6px;text-align:right}
+.sum__empty{color:var(--mute);font-size:14px;line-height:1.5}
+.bk__contact{margin-top:14px;font:400 11px var(--m);color:var(--mute);text-transform:uppercase;line-height:1.9}
+@media (max-width:1000px){.bk{grid-template-columns:1fr}.bk__sum{position:static;order:-1}.cal{grid-template-columns:1fr}.cal .mon:nth-child(2){display:none}}
+@media (max-width:600px){.bkh,.ex,.pay,.form{grid-template-columns:1fr}.dd{font-size:14px}.bk__sum .sum__img{display:none}}
 
 /* подвал */
 .foot{padding:0 var(--pad) var(--pad);overflow:hidden}
@@ -351,18 +418,45 @@ img,canvas,video{display:block}
 
 <section class="book" id="book">
   <h2 class="rv">Едем<br>в <em>горы?</em></h2>
-  <div class="book__grid">
-    <div class="book__side rv"><p>Оставьте номер, перезвоним за 15 минут. Подберём домик под компанию и расскажем про свободные даты.</p><span class="mono">+7 900 000-00-00<br>Telegram · WhatsApp<br>Ежедневно 9:00-22:00</span></div>
-    <form class="form rv" id="form" novalidate>
-      <div class="f"><label for="f1">Имя</label><input id="f1" placeholder="Как к вам обращаться"><span class="err"></span></div>
-      <div class="f"><label for="f2">Телефон</label><input id="f2" type="tel" placeholder="+7"><span class="err"></span></div>
-      <div class="f"><label for="f3">Даты</label><input id="f3" value="30.12 - 02.01"><span class="err"></span></div>
-      <div class="f"><label for="f4">Гостей</label><select id="f4"><option>2 гостя</option><option>3-4 гостя</option><option>5-6 гостей</option><option>Большая компания</option></select><span class="err"></span></div>
-      <div class="f full"><label for="f5">Домик</label><select id="f5"><option>Помогите выбрать</option><option>Кедр</option><option>Звезда</option><option>Хвоя</option><option>Шале</option></select></div>
-      <div class="form__btns"><button class="btn" type="submit"><span>Отправить заявку</span><span>→</span></button><a class="btn btn--ghost" href="#book" id="tg"><span>Написать в Telegram</span></a></div>
-      <div class="form__note">Нажимая кнопку, вы соглашаетесь с политикой обработки персональных данных</div>
-      <div class="ok" id="ok"><b>Заявка у нас</b>Это демо-версия сайта: в рабочей заявка сразу придёт администратору в Telegram.</div>
-    </form>
+  <div class="bk rv" id="bk">
+    <div class="bk__main">
+      <div class="bk__steps mono" id="bkSteps"><span class="on">01 Даты</span><span>02 Домик</span><span>03 Контакты</span></div>
+      <div class="bk__pane" data-p="1">
+        <div class="cal__nav"><button type="button" id="calPrev" aria-label="Предыдущий месяц">←</button><span class="mono" id="calHint">Выберите дату заезда</span><button type="button" id="calNext" aria-label="Следующий месяц">→</button></div>
+        <div class="cal" id="cal"></div>
+        <div class="cal__legend mono"><span><i class="lg-free"></i>Свободно</span><span><i class="lg-busy"></i>Всё занято</span><span><i class="lg-ny"></i>Новогодние даты</span></div>
+        <div class="guests">
+          <div class="stp"><label>Взрослые</label><button type="button" data-g="a" data-d="-1">−</button><b id="gA">2</b><button type="button" data-g="a" data-d="1">+</button></div>
+          <div class="stp"><label>Дети</label><button type="button" data-g="c" data-d="-1">−</button><b id="gC">0</b><button type="button" data-g="c" data-d="1">+</button></div>
+        </div>
+        <div class="bk__nav"><button type="button" class="btn" id="to2" disabled><span>Выбрать домик</span><span>→</span></button><button type="button" class="btn btn--ghost" id="pickNY"><span>Взять новогодние 30.12-02.01</span></button></div>
+      </div>
+      <div class="bk__pane" data-p="2" hidden>
+        <div class="bkh" id="bkHouses"></div>
+        <div class="ex" id="bkEx"></div>
+        <div class="bk__nav"><button type="button" class="btn btn--ghost" data-back="1"><span>← Даты</span></button><button type="button" class="btn" id="to3" disabled><span>Дальше</span><span>→</span></button></div>
+      </div>
+      <div class="bk__pane" data-p="3" hidden>
+        <form class="form" id="form" novalidate>
+          <div class="f"><label for="f1">Имя</label><input id="f1" placeholder="Как к вам обращаться" autocomplete="name"><span class="err"></span></div>
+          <div class="f"><label for="f2">Телефон</label><input id="f2" type="tel" placeholder="+7" autocomplete="tel"><span class="err"></span></div>
+          <div class="f full"><label for="f3">Пожелания</label><textarea id="f3" rows="2" placeholder="Например, приедем с собакой"></textarea></div>
+          <div class="pay">
+            <label><input type="radio" name="pay" value="pre" checked><span>Предоплата 30% онлайн<small>Бронь фиксируется сразу</small></span></label>
+            <label><input type="radio" name="pay" value="call"><span>Сначала созвониться<small>Администратор перезвонит за 15 минут</small></span></label>
+          </div>
+          <div class="bk__nav" style="grid-column:1/-1;margin-top:0"><button type="button" class="btn btn--ghost" data-back="2"><span>← Домик</span></button><button class="btn" type="submit" id="sub"><span>Забронировать</span><span>→</span></button><a class="btn btn--ghost" href="#book" id="tg"><span>Написать в Telegram</span></a></div>
+          <div class="form__note">Нажимая кнопку, вы соглашаетесь с политикой обработки персональных данных</div>
+        </form>
+      </div>
+      <div class="bk__pane done" data-p="4" hidden>
+        <span class="mono" id="dNum">Бронь</span>
+        <h3>Ждём вас<br>в <em>горах</em></h3>
+        <p id="dTxt"></p>
+        <div class="bk__nav"><button type="button" class="btn btn--ghost" id="again"><span>Новая бронь</span></button></div>
+      </div>
+    </div>
+    <aside class="bk__sum" id="bkSum"></aside>
   </div>
 </section>
 </main>
@@ -383,6 +477,7 @@ const HAS=!!(window.gsap&&window.ScrollTrigger);
 const MOB=matchMedia('(max-width:900px)').matches;
 const TOUCH=matchMedia('(hover:none)').matches;
 if(HAS){document.documentElement.classList.add('js');gsap.registerPlugin(ScrollTrigger)}
+let lenis=null;
 const mouse={x:.5,y:.5,tx:.5,ty:.5,v:0};
 addEventListener('mousemove',e=>{const nx=e.clientX/innerWidth,ny=e.clientY/innerHeight;mouse.v=Math.min(1,mouse.v+Math.hypot(nx-mouse.tx,ny-mouse.ty)*6);mouse.tx=nx;mouse.ty=ny},{passive:true});
 
@@ -482,7 +577,7 @@ const H=[
 $('track').innerHTML=H.map((h,i)=>`<article class="hcard" data-cur="Выбрать">
   <div class="hcard__img"><img src="img/${h.img}" style="object-position:${h.pos}" alt="Домик ${h.n}"><div class="hcard__n mono"><span>0${i+1} / 04</span><span>${h.p}</span></div><div class="hcard__name">${h.n}</div></div>
   <div class="hcard__meta"><p>${h.d}</p><b>→</b><div class="hcard__tags">${h.t.map(t=>`<span>${t}</span>`).join('')}</div></div></article>`).join('');
-document.querySelectorAll('.hcard').forEach((c,i)=>c.addEventListener('click',()=>{$('f5').selectedIndex=i+1;go('#book')}));
+document.querySelectorAll('.hcard').forEach((c,i)=>c.addEventListener('click',()=>{go('#book');if(BK.s&&BK.e){step(2);if(houseFree(i)){BK.house=i;renderHouses();renderSum()}}}));
 
 /* ---------- салют ---------- */
 (function(){const c=$('fw'),x=c.getContext('2d');let w,h,P=[],on=false,d=Math.min(devicePixelRatio||1,2);
@@ -498,13 +593,86 @@ function tick(){let d=NYT-new Date();if(d<=0){document.querySelector('.cd').pare
   const D=Math.floor(d/864e5);d-=D*864e5;const Hh=Math.floor(d/36e5);d-=Hh*36e5;const M=Math.floor(d/6e4);d-=M*6e4;const S=Math.floor(d/1e3);const z=n=>String(n).padStart(2,'0');$('cd').textContent=z(D);$('ch').textContent=z(Hh);$('cm').textContent=z(M);$('cs').textContent=z(S)}
 tick();setInterval(tick,1000);
 
-/* ---------- форма ---------- */
-document.querySelector('[data-ny]').addEventListener('click',e=>{e.preventDefault();$('f3').value='30.12 - 02.01';go('#book')});
-$('tg').addEventListener('click',e=>{e.preventDefault();$('ok').style.display='block';$('ok').innerHTML='<b>Telegram</b>В рабочей версии эта кнопка откроет чат с администратором базы.'});
+/* ---------- модуль бронирования ---------- */
+const BK={s:null,e:null,hov:null,house:null,a:2,c:0,ex:new Set(),off:0};
+const HB=[{n:'Кедр',img:'aframe-river.jpg',p:9500,max:2},{n:'Звезда',img:'aframe-lights.jpg',p:12000,max:3},{n:'Хвоя',img:'lights.jpg',p:14500,max:4},{n:'Шале',img:'chalet.jpg',p:24000,max:6}];
+const EX=[{k:'banya',n:'Баня на дровах',d:'3 часа, веники и чай',p:3500},{k:'chan',n:'Чан под звёздами',d:'Вечер, до 6 человек',p:4500},{k:'tr',n:'Трансфер из аэропорта',d:'Туда и обратно',p:6000},{k:'din',n:'Ужин у камина',d:'За каждого гостя',p:2500,per:1}];
+const DAY=864e5, today=new Date();today.setHours(0,0,0,0);
+const key=d=>d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
+const isNY=d=>(d.getMonth()===11&&d.getDate()>=30)||(d.getMonth()===0&&d.getDate()<=2);
+const isNYnight=d=>(d.getMonth()===11&&d.getDate()>=30)||(d.getMonth()===0&&d.getDate()===1);
+function hash(s){let h=2166136261;for(const c of s)h=Math.imul(h^c.charCodeAt(0),16777619);return (h>>>0)/4294967295}
+function busyH(hi,d){const k=key(d);if(isNYnight(d))return hi>=2; return hash(k+'#'+hi)<(d.getDay()===5||d.getDay()===6?.45:.22)}
+const allBusy=d=>HB.every((_,i)=>busyH(i,d));
+function nightPrice(hi,d){let p=HB[hi].p;if(isNYnight(d))p=Math.round(p*2.6/500)*500;else if(d.getDay()===5||d.getDay()===6)p=Math.round(p*1.2/500)*500;return p}
+function nights(){if(!BK.s||!BK.e)return [];const r=[];for(let t=+BK.s;t<+BK.e;t+=DAY)r.push(new Date(t));return r}
+function houseFree(hi){return nights().every(d=>!busyH(hi,d))}
+function houseTotal(hi){return nights().reduce((s,d)=>s+nightPrice(hi,d),0)}
+const fmt=n=>n.toLocaleString('ru-RU')+' ₽';
+const fd=d=>d.toLocaleDateString('ru-RU',{day:'numeric',month:'short'}).replace('.','');
+const pl=(n,a,b,c)=>{const m=n%10,h=n%100;return n+' '+(m===1&&h!==11?a:m>=2&&m<=4&&(h<10||h>=20)?b:c)};
+function rangeOk(a,b){for(let t=+a;t<+b;t+=DAY)if(allBusy(new Date(t)))return false;return true}
+function renderCal(){
+  const wrap=$('cal');const base=new Date(today.getFullYear(),today.getMonth()+BK.off,1);let html='';
+  for(let m=0;m<2;m++){const f=new Date(base.getFullYear(),base.getMonth()+m,1);const days=new Date(f.getFullYear(),f.getMonth()+1,0).getDate();const lead=(f.getDay()+6)%7;
+    html+=`<div class="mon"><h4>${f.toLocaleDateString('ru-RU',{month:'long',year:'numeric'})}</h4><div class="mon__g">${['пн','вт','ср','чт','пт','сб','вс'].map(w=>`<span class="wd">${w}</span>`).join('')}${'<span></span>'.repeat(lead)}`;
+    for(let d=1;d<=days;d++){const dt=new Date(f.getFullYear(),f.getMonth(),d);const t=+dt;const past=t<+today;const busy=!past&&allBusy(dt);
+      const cl=['dd'];if(busy)cl.push('busy');if(isNY(dt))cl.push('nyd');if(t===+today)cl.push('today');
+      const end=BK.e||(BK.s&&BK.hov&&BK.hov>BK.s?BK.hov:null);
+      if(BK.s&&t===+BK.s)cl.push('s');if(end&&t===+end)cl.push('e');if(BK.s&&end&&t>+BK.s&&t<+end)cl.push('in');
+      const lab=past||busy?'':isNY(dt)?'НГ':(Math.min(...HB.map((h,i)=>busyH(i,dt)?1e9:nightPrice(i,dt)))/1000).toFixed(1).replace('.0','')+'к';
+      html+=`<button type="button" class="${cl.join(' ')}" data-t="${t}" ${past?'disabled':''}>${d}<small>${lab}</small></button>`}
+    html+='</div></div>'}
+  wrap.innerHTML=html;$('calPrev').disabled=BK.off<=0;
+  $('calHint').textContent=!BK.s?'Выберите дату заезда':!BK.e?'Теперь дату выезда':fd(BK.s)+' → '+fd(BK.e)+' · '+pl(nights().length,'ночь','ночи','ночей');
+  $('to2').disabled=!(BK.s&&BK.e);
+}
+$('cal').addEventListener('click',e=>{const b=e.target.closest('.dd');if(!b||b.disabled)return;const d=new Date(+b.dataset.t);
+  if(b.classList.contains('busy')&&!(BK.s&&!BK.e&&d>BK.s))return;
+  if(!BK.s||BK.e||d<=BK.s){if(b.classList.contains('busy'))return;BK.s=d;BK.e=null}
+  else{if(rangeOk(BK.s,d))BK.e=d;else{if(b.classList.contains('busy'))return;BK.s=d;BK.e=null;BK.warn=1}}
+  BK.house=null;renderCal();renderSum();if(BK.warn){$('calHint').textContent='Внутри были занятые даты. Заезд теперь с '+fd(BK.s);BK.warn=0}});
+$('cal').addEventListener('mouseover',e=>{const b=e.target.closest('.dd');if(!b||!BK.s||BK.e)return;BK.hov=new Date(+b.dataset.t);renderCal()});
+$('calPrev').onclick=()=>{BK.off=Math.max(0,BK.off-1);renderCal()};$('calNext').onclick=()=>{BK.off=Math.min(11,BK.off+1);renderCal()};
+document.querySelectorAll('.stp button').forEach(b=>b.onclick=()=>{const g=b.dataset.g,d=+b.dataset.d;if(g==='a')BK.a=Math.max(1,Math.min(8,BK.a+d));else BK.c=Math.max(0,Math.min(6,BK.c+d));$('gA').textContent=BK.a;$('gC').textContent=BK.c;if(BK.house!=null&&BK.a+BK.c>HB[BK.house].max)BK.house=null;renderSum()});
+function pickNY(){const y=today.getMonth()===0&&today.getDate()<=2?today.getFullYear()-1:today.getFullYear();BK.s=new Date(y,11,30);BK.e=new Date(y+1,0,2);BK.off=(11-today.getMonth())+12*(y-today.getFullYear());BK.off=Math.max(0,Math.min(11,BK.off));BK.house=null;renderCal();renderSum()}
+$('pickNY').onclick=pickNY;
+function step(n){document.querySelectorAll('.bk__pane').forEach(p=>p.hidden=+p.dataset.p!==n);document.querySelectorAll('#bkSteps span').forEach((s,i)=>{s.classList.toggle('on',i+1===n);s.classList.toggle('done',i+1<n)});
+  if(n===2)renderHouses();const top=$('bk').getBoundingClientRect().top+scrollY-90;if(Math.abs(scrollY-top)>200){lenis?lenis.scrollTo(top,{duration:1}):scrollTo({top,behavior:'smooth'})}}
+$('to2').onclick=()=>step(2);document.querySelectorAll('[data-back]').forEach(b=>b.onclick=()=>step(+b.dataset.back));
+function renderHouses(){const g=BK.a+BK.c;
+  $('bkHouses').innerHTML=HB.map((h,i)=>{const free=houseFree(i),fit=g<=h.max,ok=free&&fit;
+    return `<button type="button" class="bkh__c ${ok?'':'off'} ${BK.house===i?'sel':''}" data-h="${i}"><span class="chk">✓</span><img src="img/${h.img}" alt="${h.n}"><div><h5>${h.n}</h5><p>До ${pl(h.max,'гостя','гостей','гостей')}</p><strong>${!free?'Занят на эти даты':!fit?'Не поместитесь':fmt(houseTotal(i))+' за всё'}</strong></div></button>`}).join('');
+  $('bkEx').innerHTML=EX.map(x=>`<label><span>${x.n}<small>${x.d} · ${fmt(x.p)}</small></span><input type="checkbox" value="${x.k}" ${BK.ex.has(x.k)?'checked':''}></label>`).join('');
+  $('to3').disabled=BK.house==null}
+$('bkHouses').addEventListener('click',e=>{const b=e.target.closest('.bkh__c');if(!b||b.classList.contains('off'))return;BK.house=+b.dataset.h;renderHouses();renderSum()});
+$('bkEx').addEventListener('change',e=>{const k=e.target.value;e.target.checked?BK.ex.add(k):BK.ex.delete(k);renderSum()});
+$('to3').onclick=()=>step(3);
+function total(){if(BK.house==null)return 0;let t=houseTotal(BK.house);EX.forEach(x=>{if(BK.ex.has(x.k))t+=x.per?x.p*(BK.a+BK.c):x.p});return t}
+function renderSum(){const s=$('bkSum');const n=nights().length;
+  let h=`<h4>Ваша поездка</h4>`;
+  if(BK.house!=null)h+=`<div class="sum__img"><img src="img/${HB[BK.house].img}" alt=""></div>`;
+  if(!BK.s){s.innerHTML=h+`<p class="sum__empty">Выберите даты в календаре. Цена под числом показывает самую доступную ночь в этот день.</p><div class="bk__contact">+7 900 000-00-00<br>Telegram · WhatsApp</div>`;return}
+  h+=`<div class="sum__row"><span>Заезд</span><span>${fd(BK.s)}, с 15:00</span></div>`;
+  h+=`<div class="sum__row"><span>Выезд</span><span>${BK.e?fd(BK.e)+', до 12:00':'выберите дату'}</span></div>`;
+  if(n)h+=`<div class="sum__row"><span>Ночей</span><span>${n}${nights().some(isNYnight)?' · новогодние':''}</span></div>`;
+  h+=`<div class="sum__row"><span>Гости</span><span>${pl(BK.a,'взрослый','взрослых','взрослых')}${BK.c?', '+pl(BK.c,'ребёнок','ребёнка','детей'):''}</span></div>`;
+  if(BK.house!=null){h+=`<div class="sum__row"><span>${HB[BK.house].n}</span><span>${fmt(houseTotal(BK.house))}</span></div>`;
+    EX.forEach(x=>{if(BK.ex.has(x.k))h+=`<div class="sum__row"><span>${x.n}</span><span>${fmt(x.per?x.p*(BK.a+BK.c):x.p)}</span></div>`});
+    const t=total();h+=`<div class="sum__tot"><span class="mono">Итого</span><b>${fmt(t)}</b></div><div class="sum__pre">Предоплата 30%: ${fmt(Math.round(t*.3/100)*100)}</div>`}
+  s.innerHTML=h}
+$('tg').addEventListener('click',e=>{e.preventDefault();alertBox('Telegram','В рабочей версии эта кнопка откроет чат с администратором базы.')});
+function alertBox(t,m){$('dNum').textContent=t;$('dTxt').textContent=m;step(4)}
 $('form').addEventListener('submit',e=>{e.preventDefault();let bad=false;const n=$('f1'),p=$('f2');
   const set=(el,msg)=>{el.parentElement.querySelector('.err').textContent=msg;el.style.borderColor=msg?'var(--ember)':'';if(msg)bad=true};
-  set(n,n.value.trim()?'':'Как к вам обращаться?');set(p,p.value.replace(/\D/g,'').length>=10?'':'Нужен номер, чтобы перезвонить');
-  if(bad)return;$('ok').style.display='block';e.target.querySelector('.form__btns').style.display='none'});
+  set(n,n.value.trim()?'':'Как к вам обращаться?');set(p,p.value.replace(/\D/g,'').length>=10?'':'Нужен номер, чтобы подтвердить бронь');if(bad)return;
+  const id='PRV-'+String(Math.floor(1000+Math.random()*9000));const pay=document.querySelector('[name=pay]:checked').value;
+  $('dNum').textContent='Бронь '+id+' · '+fd(BK.s)+' → '+fd(BK.e);
+  $('dTxt').textContent=`${n.value.trim()}, домик «${HB[BK.house].n}» на ${pl(nights().length,'ночь','ночи','ночей')} за ${fmt(total())}. `+(pay==='pre'?'Ссылка на предоплату придёт в SMS.':'Администратор перезвонит в течение 15 минут.')+' Это демо-версия: в рабочей бронь сразу попадает в календарь базы и администратору в Telegram.';
+  step(4)});
+$('again').onclick=()=>{Object.assign(BK,{s:null,e:null,hov:null,house:null});BK.ex.clear();$('form').reset();step(1);renderCal();renderSum()};
+renderCal();renderSum();
+document.querySelector('[data-ny]').addEventListener('click',e=>{e.preventDefault();pickNY();step(1);go('#book')});
 
 /* ---------- курсор ---------- */
 if(!TOUCH){const cur=$('cur'),ret=$('ret');let cx=0,cy=0,tx=0,ty=0,first=true;
@@ -514,8 +682,7 @@ if(!TOUCH){const cur=$('cur'),ret=$('ret');let cx=0,cy=0,tx=0,ty=0,first=true;
   document.querySelector('.day').dataset.cur='Листай';}
 
 /* ---------- навигация ---------- */
-let lenis=null;
-function go(id){const el=document.querySelector(id);if(!el)return;if(lenis)lenis.scrollTo(el,{offset:0,duration:1.8,onComplete:()=>{if(id==='#book')$('f1').focus({preventScroll:true})}});else{el.scrollIntoView({behavior:'smooth'});if(id==='#book')setTimeout(()=>$('f1').focus({preventScroll:true}),900)}}
+function go(id){const el=document.querySelector(id);if(!el)return;if(lenis)lenis.scrollTo(el,{offset:0,duration:1.8,offset:-60});else{el.scrollIntoView({behavior:'smooth'});}}
 document.querySelectorAll('a[href^="#"]').forEach(a=>{if(a.hasAttribute('data-ny')||a.id==='tg')return;a.addEventListener('click',e=>{const id=a.getAttribute('href');if(id.length>1){e.preventDefault();go(id)}})});
 
 /* ---------- анимации ---------- */
